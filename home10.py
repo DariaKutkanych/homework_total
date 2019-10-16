@@ -51,10 +51,10 @@ class Library:
         return [x for x in self.books if x.year == year]
 
     def fetch_schoolbooks(self):
-        return [x for x in self.books if x.type == "Schoolbook"]
+        return [x for x in self.books if x.btype == "Schoolbook"]
 
     def fetch_magazines(self):
-        return [x for x in self.books if x.type == "Magazine"]
+        return [x for x in self.books if x.btype == "Magazine"]
 
 
 class Book:
