@@ -37,6 +37,7 @@
 #   raised when you try to add a song to an album and artists don't match.
 
 from functools import reduce
+import datetime
 
 
 class WrongArtistError(Exception):
@@ -79,6 +80,8 @@ class Album:
     @property
     def duration(self):
         return reduce(lambda x, y: x.duration + y.duration, self.songs)
+        #datetime.timedelta.(seconds=sum(song.duration.seconds
+        # for song in self.songs
 
     def __repr__(self):
         return self.name
@@ -89,9 +92,9 @@ class Song:
         self.name = name
         self.artist = artist
         self.year = year
-        self.duration = duration
+        self.duration = datetime.timedelta(seconds=duration)
         self.album = album
-        self.features = features
+        self.features = features or []
         self.artist.songs.append(self)
 
         if self.album:
@@ -110,8 +113,8 @@ album1 = Album("Cool", 2010, "Rock", artist1)
 album2 = Album("Light", 2017, "Pop", artist2)
 album3 = Album("Light", 2017, "Pop", artist1)
 
-song1 = Song("Nature", artist1, ["Steve", "Peter"], 2010, 3, album1)
-song5 = Song("FGh", artist1, ["Steve", "Peter"], 2010, 3, album1)
+song1 = Song("Nature", artist1, ["Steve", "Peter"], 2010, 300, album1)
+song5 = Song("FGh", artist1, ["Steve", "Peter"], 2010, 305, album1)
 # song2 = Song("Fun", artist2, ["Steve", "Peter"], 2015, 6, album1) #conflict
 song3 = Song("Dance", artist2, ["Steve", "Peter"], 2019, 5, album2)
 song6 = Song("Cool", artist1, ["Steve", "Peter"], 2019, 5, album3)
