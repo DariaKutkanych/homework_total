@@ -2,7 +2,7 @@ from flask import Flask, request
 from flask_restful import Api, Resource
 import sqlite3
 
-from Database.sql2les.functions import get_data, post_data, get_statistics, get_comments, get_post_comments,\
+from sql2les.functions import get_data, post_data, get_statistics, get_comments, get_post_comments,\
     get_posts_with_data
 
 app = Flask(__name__)
